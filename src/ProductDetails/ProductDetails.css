@@ -1,0 +1,10 @@
+.product-container {
+  background-color: beige;
+  padding: 1em 0 1em 0;
+  position: relative;
+  width: 150px;
+  /* height: 250px; */
+  border: 1px solid black;
+  margin: 2em;
+  flex: 1 1 150px;
+}

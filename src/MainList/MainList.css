@@ -1,0 +1,6 @@
+.main-list {
+  flex: 0 0 50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import "./MainList.css";
+import TWSContext from "../TWSMapContext";
 
 /**
  * 
@@ -19,6 +20,7 @@ async function getList() {
   }
 
 export default function MainList(props) {
+  const [twsElements, setTwsElements] = useContext(TWSContext)
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -31,6 +33,12 @@ export default function MainList(props) {
     // setList(data)
   },[])
 
+  const handleProductClick = (e,item) => {
+    console.log("item",item)
+    const element = <ProductDetails key={item.id} item={item} onClick={(e) => handleProductClick(e,item)} />
+    setTwsElements((prevTwsElements) => [...prevTwsElements, element])
+  }
+
   console.log("list",list)
 
   return (
@@ -39,7 +47,7 @@ export default function MainList(props) {
       {list?.products?.length > 0 ? (list.products.map((item,index) => {
         console.log("item",item)
         return (
-          <ProductDetails key={index} item={item} />
+          <ProductDetails key={index} item={item} onClick={(e) => handleProductClick(e,item)} />
         )
       })): <></>}
     </div>

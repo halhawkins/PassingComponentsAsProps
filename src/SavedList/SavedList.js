@@ -1,8 +1,10 @@
 import TWSContext from "../TWSMapContext"
-import React, { useContext } from "react"
+import useTWSContext from "../useTWSContext"
+import "./SavedList.css"
 
 export default function SavedList(props) {
-  const [twsElements] = useContext(TWSContext)
+  const { twsElements } = useTWSContext()
+
   return (
     <div className="saved-list">{twsElements}</div>
   )
